@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "devCommand": "npm run develop",
+  "framework": "strapi",
+  "public": true,
+  "env": {
+    "NODE_ENV": {
+      "default": "production"
+    },
+    "DATABASE_CLIENT": {
+      "default": "postgres"
+    },
+    "DATABASE_HOST": {
+      "description": "PostgreSQL host (e.g., from Vercel Postgres)"
+    },
+    "DATABASE_PORT": {
+      "default": "5432"
+    },
+    "DATABASE_NAME": {
+      "description": "Database name",
+      "default": "strapi_milfshakes"
+    },
+    "DATABASE_USERNAME": {
+      "description": "Database user"
+    },
+    "DATABASE_PASSWORD": {
+      "description": "Database password, encrypt in Vercel"
+    },
+    "JWT_SECRET": {
+      "description": "JWT secret for Strapi auth, generate a random string"
+    },
+    "ADMIN_JWT_SECRET": {
+      "description": "Admin JWT secret, generate a random string"
+    },
+    "API_TOKEN_SALT": {
+      "description": "API token salt for authentication"
+    }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
+}
