@@ -1,0 +1,18 @@
+<% include('layout', { body: (function(){ %>
+  <h2>Catálogo</h2>
+  <div class="grid">
+    <% products.forEach(function(p){ %>
+      <div class="card">
+        <a href="/product/<%= p.id %>"><img src="<%= p.image %>" alt="<%= p.name %>"></a>
+        <h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+        <p class="price">€<%= p.price.toFixed(2) %></p>
+        <p class="desc"><%= p.short_desc %></p>
+        <form action="/cart/add" method="post" class="inline-form">
+          <input type="hidden" name="product_id" value="<%= p.id %>">
+          <input type="number" name="quantity" value="1" min="1" style="width:60px">
+          <button type="submit">Añadir</button>
+        </form>
+      </div>
+    <% }) %>
+  </div>
+<% })() }) %>
